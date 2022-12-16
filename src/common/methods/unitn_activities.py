@@ -21,7 +21,7 @@ def fetch_activities(max_results: int = 5) -> list[Attivita]:
 
     resp = requests.request(
         method="GET",
-        url=UNITN_COMBO_ENDPOINT + "?sw=ec_&aa=2022&page=attivita"
+        url=url
     )
 
     # clean output
@@ -37,4 +37,6 @@ def fetch_activities(max_results: int = 5) -> list[Attivita]:
             break
         activity_list.append(cast(Attivita, i))
         c += 1
+
+    print(activity_list[0])
     return activity_list
