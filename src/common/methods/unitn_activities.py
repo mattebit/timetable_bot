@@ -1,8 +1,9 @@
-from common.classes.unitn import Attivita
-from typing import List, TypedDict, cast
-import json
-import requests
 import datetime
+import json
+from typing import cast
+
+import requests
+from common.classes.unitn import Attivita
 
 UNITN_COMBO_ENDPOINT = "https://easyacademy.unitn.it/AgendaStudentiUnitn/combo.php"
 
@@ -26,7 +27,7 @@ def fetch_activities(max_results: int = 5) -> list[Attivita]:
 
     # clean output
     resp = resp.text.split('var elenco_attivita = ')[1]  # has js inside
-    resp = resp[0:len(resp)-3]  # has a trailing ";"
+    resp = resp[0:len(resp) - 3]  # has a trailing ";"
 
     l = json.loads(resp)
     activity_list = []

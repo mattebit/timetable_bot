@@ -1,12 +1,11 @@
-from typing import List, TypedDict, cast
-import json
+from typing import TypedDict
 
 
 class Attivita(TypedDict):
     periodi: list
     pub_type: str
     label: str
-    valore: str # Actual ID of the activity
+    valore: str  # Actual ID of the activity
     nome_insegnamento: str
     id: str
     docente: str
@@ -33,6 +32,7 @@ class Lezione(TypedDict):
     tipo: str
     ora_inizio: str
     ora_fine: str
+
 
 class GridCallResponse(TypedDict):
     day: str
