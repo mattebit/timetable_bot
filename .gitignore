@@ -3,3 +3,4 @@ __pycache__
 .vscode
 .idea
 credentials.json
+timetable_bot_data
