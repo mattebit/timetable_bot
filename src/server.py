@@ -17,6 +17,9 @@ from telegram.ext import (
 from common.classes.user import Userinfo
 from common.methods.google import start_flow, end_flow, getService, addCalendar
 from common.methods.unitn_activities import fetch_activities, filter_activities
+from src.common.classes.unitn import Attivita, Lezione
+from src.common.methods.unitn_schedule import add_lecture_to_calendar, fetch_lectures
+from src.common.methods.utils import get_lecture_start_end_timestamps, update_lectures_to_calendar
 
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
@@ -42,11 +45,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def get_activities(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = ' '.join(context.args)
-    number_list: List = []
+    activities_list: list[Attivita] = []
     res = filter_activities(fetch_activities(), query)
+
     for i in res:
-        number_list.append(i['label'])
-    await update.message.reply_text("Cose:", reply_markup=build_keyboard(number_list))
+        activities_list.append(i)
+
+    if len(res) == 0:
+        await update.message.reply_text("No activities found")
+        return
+
+    await update.message.reply_text("Activities found:", reply_markup=build_keyboard_activities(activities_list))
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Displays info on how to use the bot."""
@@ -69,26 +78,41 @@ def build_keyboard(current_list: List) -> InlineKeyboardMarkup:
          for i in current_list]
     )
 
+def build_keyboard_activities(list_attivita: list[Attivita]) -> InlineKeyboardMarkup:
+    """Helper function to build the next inline keyboard containing the activities"""
+    return InlineKeyboardMarkup.from_column(
+        [InlineKeyboardButton(i['nome_insegnamento'], callback_data=(i, list_attivita))
+         for i in list_attivita]
+    )
+
 
 async def list_button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Parses the CallbackQuery and updates the message text."""
+
+    userinfo = context.user_data["userinfo"]
+
     query = update.callback_query
     await query.answer()
     # Get the data from the callback_data.
     # If you're using a type checker like MyPy, you'll have to use typing.cast
     # to make the checker get the expected type of the callback_data
-    number, number_list = cast(Tuple[str, List[str]], query.data)
-    # append the number to the list
-    # number_list.append(number)
+    activity, list_activities = cast(Tuple[Attivita, list[Attivita]], query.data)
+
+    print(activity)
+
+    lectures : list[Lezione] = fetch_lectures(activity['valore'], True)
+
+    if len(lectures) == 0:
+        await query.edit_message_text("No lectures found in the near future")
+        return
+
+    userinfo.following_lectures[activity] = lectures
+
+    update_lectures_to_calendar(userinfo)
 
     await query.edit_message_text(
-        str(number)
+        str(f"Added activity {activity['nome_insegnamento']} events in your google calendar")
     )
-
-    # await query.edit_message_text(
-    #    text=f"So far you've selected {number_list}. Choose the next item:",
-    #    reply_markup=build_keyboard(number_list),
-    # )
 
     # we can delete the data stored for the query, because we've replaced the buttons
     context.drop_callback_data(query)

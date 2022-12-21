@@ -1,8 +1,11 @@
 import datetime
 
 import requests
+from googleapiclient.discovery import Resource
 
 from src.common.classes.unitn import Lezione, GridCallResponse
+from src.common.methods.google import addEvent
+from src.common.methods.utils import get_lecture_start_end_timestamps
 
 # By setting all_events to 1 you will get all the events of the course
 UNITN_GRID_ENDPOINT = "https://easyacademy.unitn.it/AgendaStudentiUnitn/grid_call.php"
@@ -30,6 +33,14 @@ def fetch_lectures(attivita_id: str, all_events: bool = False) -> list[Lezione]:
 
     j: GridCallResponse = resp.json()
 
-    lecture_list: list[Lezione] = j['celle']
+    lecture_list : list[Lezione] = []
+    lecture_list = j['celle']
+
+    # Create start and end unix timestamps
+    for l in lecture_list:
+        start_timestamp, end_timestamp = get_lecture_start_end_timestamps(
+            l['ora_inizio'], l['ora_fine'], l['timestamp'])
+        l['timestamp_start'] = start_timestamp
+        l['timestamp_end'] = end_timestamp
 
     return lecture_list

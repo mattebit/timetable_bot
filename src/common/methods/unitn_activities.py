@@ -16,7 +16,7 @@ def filter_activities(activities: list[Attivita], filter_by: str) -> list[Attivi
     return res
 
 
-def fetch_activities(max_results: int = 5) -> list[Attivita]:
+def fetch_activities() -> list[Attivita]:
     year = str(datetime.date.today().year)
     url = UNITN_COMBO_ENDPOINT + f"?sw=ec_&aa={year}&page=attivita"
 
@@ -31,13 +31,9 @@ def fetch_activities(max_results: int = 5) -> list[Attivita]:
 
     l = json.loads(resp)
     activity_list = []
-    c = 0
 
     for i in l:
-        if c >= max_results:
-            break
         activity_list.append(cast(Attivita, i))
-        c += 1
 
     print(activity_list[0])
     return activity_list

@@ -1,9 +1,8 @@
-from common.classes.unitn import Attivita, Lezione
+from src.common.classes.unitn import Attivita, Lezione
 
 
 class Userinfo:
-    following_activities: list[Attivita]
-    following_lectures: list[Lezione]
+    following_lectures: dict[Attivita, list[Lezione]]
     calendar_id: str
     has_calendar: bool
     consent_given: bool

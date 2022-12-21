@@ -1,4 +1,7 @@
 from typing import TypedDict
+from datetime import datetime
+
+from common.methods.utils import parseHourString
 
 
 class Attivita(TypedDict):
@@ -32,7 +35,10 @@ class Lezione(TypedDict):
     tipo: str
     ora_inizio: str
     ora_fine: str
-
+    # Custom
+    timestamp_start: datetime
+    timestamp_end: datetime
+    calendar_event_id: str
 
 class GridCallResponse(TypedDict):
     day: str

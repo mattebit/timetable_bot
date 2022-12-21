@@ -1,9 +1,12 @@
 from __future__ import print_function
 
+from datetime import datetime
+
 from google.auth.exceptions import MutualTLSChannelError
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
+from googleapiclient.discovery import Resource
 
 GOOGLE_SCOPES = ['https://www.googleapis.com/auth/calendar']
 
@@ -26,7 +29,7 @@ def end_flow(flow, code: str):
     return flow
 
 
-def getService(credentials):
+def getService(credentials) -> Resource:
     creds = credentials
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
@@ -44,18 +47,18 @@ def getService(credentials):
     return service
 
 
-def hasCalendar(service, calendarId: str):
+def hasCalendar(service : Resource, calendarId: str) -> bool:
     calendar = getCalendar(service, calendarId)
 
     return not (calendar is None)
 
 
-def getCalendar(service, calendarId: str):
+def getCalendar(service : Resource, calendarId: str):
     calendar = service.calendars().get(calendarId=calendarId).execute()
     return calendar
 
 
-def addCalendar(service, name: str):
+def addCalendar(service: Resource, name: str):
     calendar = {
         'summary': name,
         'timeZone': 'America/Los_Angeles'
@@ -63,3 +66,47 @@ def addCalendar(service, name: str):
 
     created_calendar = service.calendars().insert(body=calendar).execute()
     return created_calendar
+
+def addEvent(service : Resource,
+             calendarId: str,
+             name: str,
+             location: str,
+             description: str,
+             start: datetime,
+             end: datetime,
+             timezone:str = 'Europe/Rome'):
+    """
+    Add an event to a specific calendar
+    Reference: https://developers.google.com/calendar/api/v3/reference/events
+    """
+    event = {
+        'summary': name,
+        'location': location,
+        'description': description,
+        'start': {
+            #'dateTime': '2015-05-28T09:00:00-07:00',
+            # The - is the offset, not needed if using timezone
+            'dateTime': start.isoformat('T'),
+            'timeZone': timezone,
+        },
+        'end': {
+            #'dateTime': '2015-05-28T17:00:00-07:00',
+            'dateTime': end.isoformat('T'),
+            'timeZone': timezone,
+        },
+        'recurrence': [
+        ],
+        'attendees': [
+        ],
+        'reminders': {
+            'useDefault': True,
+        },
+    }
+
+    event = service.events().insert(calendarId=calendarId, body=event).execute()
+    print('Event created: %s' % (event.get('htmlLink')))
+    return event
+
+# TODO: List events
+
+# TODO: Update added events to calendar
