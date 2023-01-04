@@ -1,7 +1,8 @@
-from src.common.classes.course import Course
+import src.common.classes.course as course
+
 
 class Userinfo:
-    follwoing_courses : list[Course]
+    follwoing_courses : list[course.Course]
     calendar_id: str
     has_calendar: bool
     consent_given: bool
@@ -10,8 +11,6 @@ class Userinfo:
 
     def __init__(self):
         self.follwoing_courses = []
-        self.following_activities = {}
-        self.following_lectures = {}
         self.calendar_id = None
         self.has_calendar = False
         self.consent_given = False

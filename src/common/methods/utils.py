@@ -2,10 +2,6 @@ import re
 from datetime import datetime
 from enum import Enum
 
-from src.common.classes.course import Course
-from src.common.classes.user import Userinfo
-from src.common.methods.google import addEvent, getService
-
 
 class University(Enum):
     UNITN = 0
@@ -36,28 +32,3 @@ def get_lecture_start_end_timestamps(ora_inizio: str,
     timestamp_end = datetime.fromtimestamp(date_timestamp).replace(hour=end_hour, minute=end_minutes)
 
     return timestamp_start, timestamp_end
-
-
-def update_lectures_to_calendar(userinfo: Userinfo):
-    service = getService(userinfo.credentials)
-    #TODO: Fetch all events and remove the not used one
-
-    for c in userinfo.follwoing_courses:
-        for lec in c.lectures:
-            if len(lec.calendar_event_id) == 0:
-                # TODO: Check if id of event is updated
-                addEvent(service,
-                     userinfo.calendar_id,
-                     lec)
-            else:
-                pass
-                # TODO: validate the local calendar to the remote one
-                # TODO: getEvent()
-                # TODO: validate()
-
-def group_courses_by_uni(courses: list[Course]) -> dict[University, list[Course]]:
-    res : dict[University, list[Course]] = {}
-    for c in courses:
-        res[c.university].append(c)
-
-    return res

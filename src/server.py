@@ -14,14 +14,12 @@ from telegram.ext import (
     PicklePersistence, ConversationHandler, MessageHandler, filters,
 )
 
-from common.classes.user import Userinfo
-from common.methods.google import start_flow, end_flow, getService, addCalendar
-from common.methods.unitn_activities import fetch_activities, filter_activities, fetch_lectures, \
-    list_lezione_to_list_lecture, attivita_to_course, list_attivita_to_list_courses
-from common.classes.unitn import Attivita, Lezione
-from common.methods.utils import update_lectures_to_calendar, group_courses_by_uni
-from src.common.classes.course import Course
-from src.common.classes.lecture import Lecture
+import src.common.classes.lecture as lecture
+import src.common.methods.unitn_activities as unitn_activities
+import src.common.methods.utils as utils
+import src.common.classes.user as user
+import src.common.methods.google as google
+import src.common.classes.course as course
 
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
@@ -39,7 +37,7 @@ class link_google_states(Enum):
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    context.user_data["userinfo"] = Userinfo()
+    context.user_data["userinfo"] = user.Userinfo()
     await update.message.reply_text(
         'Hey, type /help for more info'
     )
@@ -60,7 +58,8 @@ async def clear(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def add_unitn_course(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = ' '.join(context.args)
-    courses_list = list_attivita_to_list_courses(filter_activities(fetch_activities(), query))
+    courses_list = unitn_activities.list_attivita_to_list_courses(
+        unitn_activities.filter_activities(unitn_activities.fetch_activities(), query))
 
     if len(courses_list) == 0:
         await update.message.reply_text("No activities found")
@@ -73,11 +72,11 @@ async def list_following_courses(update, context):
     """
     Lists the courses the user is follwoing, grouping them by university
     """
-    userinfo : Userinfo = context.user_data['userinfo']
+    userinfo : user.Userinfo = context.user_data['userinfo']
 
     res = ""
 
-    courses_by_uni = group_courses_by_uni(userinfo.follwoing_courses)
+    courses_by_uni = utils.group_courses_by_uni(userinfo.follwoing_courses)
 
     for uni in courses_by_uni.keys():
         res += f"{uni.name}:\n"
@@ -88,17 +87,17 @@ async def list_following_courses(update, context):
         f"You are following these courses:\n{res}"
     )
 
-def build_keyboard(current_list: List[Course]) -> InlineKeyboardMarkup:
+def build_keyboard(current_list: List[course.Course]) -> InlineKeyboardMarkup:
     """Helper function to build the inline keyboard from a list"""
     return InlineKeyboardMarkup.from_column(
         [InlineKeyboardButton(str(i), callback_data=(i, current_list))
          for i in current_list]
     )
 
-async def list_button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+async def keyboard_course_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Parses the CallbackQuery and updates the message text."""
 
-    userinfo = context.user_data["userinfo"]
+    userinfo : user.Userinfo = context.user_data["userinfo"]
 
     query = update.callback_query
     await query.answer()
@@ -106,26 +105,23 @@ async def list_button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
     # If you're using a type checker like MyPy, you'll have to use typing.cast
     # to make the checker get the expected type of the callback_data
 
-    #FIXME: Convert it by using courses
-    activity : Attivita
-    activity, list_activities = cast(Tuple[Attivita, list[Attivita]], query.data)
+    l : lecture.Lecture
+    c, courses_list = cast(Tuple[course.Course, list[course.Course]], query.data)
 
-    lectures : list[Lecture] = list_lezione_to_list_lecture(
-            fetch_lectures(activity['valore'], True))
+    if c in userinfo.follwoing_courses:
+        await query.edit_message_text(f"Your are already following the lectures of {course.name}")
+        return
 
-    if len(lectures) == 0:
+    c.fetch_lectures()
+
+    if len(c.lectures) == 0:
         await query.edit_message_text("No lectures found in the near future")
         return
 
-    if activity['valore'] in userinfo.following_activities:
-        await query.edit_message_text(f"Lectures of {activity['valore']} already present in google calendar")
-        return
-
-    userinfo.following_activities[activity['valore']] = activity
-    userinfo.following_lectures[activity['valore']] = lectures
+    userinfo.follwoing_courses.append(c)
 
     await query.edit_message_text(
-        str(f"Added activity {activity['nome_insegnamento']} events in your google calendar")
+        str(f"You are now following the course {c.name}")
     )
 
     # we can delete the data stored for the query, because we've replaced the buttons
@@ -133,8 +129,8 @@ async def list_button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 
 
 async def sync_google(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    userinfo = context.user_data["userinfo"]
-    update_lectures_to_calendar(userinfo)
+    userinfo : user.Userinfo = context.user_data["userinfo"]
+    utils.update_lectures_to_calendar(userinfo)
 
 async def handle_invalid_button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Informs the user that the button is no longer available."""
@@ -145,7 +141,7 @@ async def handle_invalid_button(update: Update, context: ContextTypes.DEFAULT_TY
 
 
 async def google_link_account(update, context):
-    flow, auth_url = start_flow()
+    flow, auth_url = google.start_flow()
     context.user_data["userinfo"].flow = flow
     await update.message.reply_text(
         'Please go to this URL: {}'.format(auth_url) + "\n" +
@@ -163,7 +159,7 @@ async def google_get_code(update, context):
         )
         return ConversationHandler.END
 
-    flow = end_flow(flow, update.message.text)
+    flow = google.end_flow(flow, update.message.text)
     # context.user_data["userinfo"].flow = flow
     context.user_data["userinfo"].credentials = flow.credentials
     await update.message.reply_text(
@@ -182,7 +178,7 @@ async def cancel(update, context):
     return ConversationHandler.END
 
 async def add_google_calendar(update, context):
-    userinfo = context.user_data["userinfo"]
+    userinfo : user.Userinfo = context.user_data["userinfo"]
     if userinfo.has_calendar:
         await update.message.reply_text(
             "You already have a connected calendar"
@@ -195,8 +191,8 @@ async def add_google_calendar(update, context):
         )
         return
 
-    service = getService(userinfo.credentials)
-    calendar = addCalendar(service, "timetable_bot")
+    service = google.getService(userinfo.credentials)
+    calendar = google.addCalendar(service, "timetable_bot")
     userinfo.has_calendar = True
     userinfo.calendar_id = calendar['id']
     await update.message.reply_text(
@@ -224,7 +220,7 @@ def main() -> None:
     application.add_handler(CommandHandler("clear", clear))
 
     # Unitn commands
-    application.add_handler(CommandHandler("follow_course", add_unitn_course))
+    application.add_handler(CommandHandler("follow_unitn_course", add_unitn_course))
 
     # General
     application.add_handler(CommandHandler("list_following_courses", list_following_courses))
@@ -249,7 +245,7 @@ def main() -> None:
         CallbackQueryHandler(handle_invalid_button,
                              pattern=InvalidCallbackData)
     )
-    application.add_handler(CallbackQueryHandler(list_button))
+    application.add_handler(CallbackQueryHandler(keyboard_course_callback))
 
     # Run the bot until the user presses Ctrl-C
     application.run_polling()

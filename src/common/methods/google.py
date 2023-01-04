@@ -8,7 +8,8 @@ from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import Resource
 from googleapiclient.discovery import build
 
-from src.common.classes.lecture import Lecture
+import src.common.classes.lecture as lecture
+import src.common.classes.user as user
 
 GOOGLE_SCOPES = ['https://www.googleapis.com/auth/calendar']
 
@@ -112,7 +113,7 @@ def addEvent(service: Resource,
 
 def addEvent(service: Resource,
              calendarId: str,
-             lecture : Lecture,
+             lecture : lecture.Lecture,
              timezone: str = 'Europe/Rome'):
     """
     Add an event to a specific calendar
@@ -154,3 +155,20 @@ def addEvent(service: Resource,
 # TODO: List events
 
 # TODO: Update added events to calendar
+
+def update_lectures_to_calendar(userinfo: user.Userinfo):
+    service = getService(userinfo.credentials)
+    #TODO: Fetch all events and remove the not used one
+
+    for c in userinfo.follwoing_courses:
+        for lec in c.lectures:
+            if len(lec.calendar_event_id) == 0:
+                # TODO: Check if id of event is updated
+                addEvent(service,
+                     userinfo.calendar_id,
+                     lec)
+            else:
+                pass
+                # TODO: validate the local calendar to the remote one
+                # TODO: getEvent()
+                # TODO: validate()

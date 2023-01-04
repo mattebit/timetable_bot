@@ -1,4 +1,4 @@
-from ics import Calendar, Event
+from ics import Event
 
 class Lecture:
     event : Event
