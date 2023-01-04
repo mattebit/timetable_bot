@@ -1,2 +1,7 @@
-python-telegram-bot==20.0a0
+python-telegram-bot==20.0a1
 ics
+python-dotenv
+requests
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
