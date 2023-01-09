@@ -15,6 +15,7 @@ import src.common.methods.utils as utils
 UNITN_COMBO_ENDPOINT = "https://easyacademy.unitn.it/AgendaStudentiUnitn/combo.php"
 UNITN_GRID_ENDPOINT = "https://easyacademy.unitn.it/AgendaStudentiUnitn/grid_call.php"
 
+
 def filter_activities(activities: list[unitn.Attivita], filter_by: str) -> list[unitn.Attivita]:
     res = []
     for act in activities:
@@ -24,7 +25,7 @@ def filter_activities(activities: list[unitn.Attivita], filter_by: str) -> list[
 
 
 def fetch_activities() -> list[unitn.Attivita]:
-    year = str(datetime.date.today().year)
+    year = 2022  # str(datetime.date.today().year)
     # TODO: urllib urlparse purify
     url = UNITN_COMBO_ENDPOINT + f"?sw=ec_&aa={year}&page=attivita"
 
@@ -43,12 +44,12 @@ def fetch_activities() -> list[unitn.Attivita]:
     for i in l:
         activity_list.append(cast(unitn.Attivita, i))
 
-    print(activity_list[0])
     return activity_list
+
 
 # the date filters the week activities
 def fetch_lectures(attivita_id: str, all_events: bool = False) -> list[unitn.Lezione]:
-    year = str(datetime.date.today().year)
+    year = 2022  # str(datetime.date.today().year)
     date = datetime.date.today().strftime('%d-%m-%Y')  # italian format
     if all_events:
         all_events = 1
@@ -72,7 +73,7 @@ def fetch_lectures(attivita_id: str, all_events: bool = False) -> list[unitn.Lez
     lecture_list: list[unitn.Lezione] = []
     lecture_list = j['celle']
 
-    # Create start and end unix timestamps
+    # Create start and end unix timestampss
     for l in lecture_list:
         start_timestamp, end_timestamp = utils.get_lecture_start_end_timestamps(
             l['ora_inizio'], l['ora_fine'], l['timestamp'])
@@ -82,27 +83,31 @@ def fetch_lectures(attivita_id: str, all_events: bool = False) -> list[unitn.Lez
 
     return lecture_list
 
-def lezione_to_lecture(l : unitn.Lezione) -> lecture.Lecture:
+
+def lezione_to_lecture(l: unitn.Lezione) -> lecture.Lecture:
     e = Event()
     e.name = l['nome_insegnamento']
     e.description = l['name_original']
     e.begin = l['timestamp_start']
     e.end = l['timestamp_end']
     e.location = l['aula']
+    e.status = "CANCELLED" if l['Annullato'] == "1" else "CONFIRMED"
 
     l = lecture.Lecture()
     l.event = e
 
     return l
 
-def list_lezione_to_list_lecture(ll : list[unitn.Lezione]) -> list[lecture.Lecture]:
-    res : list[lecture.Lecture] = []
+
+def list_lezione_to_list_lecture(ll: list[unitn.Lezione]) -> list[lecture.Lecture]:
+    res: list[lecture.Lecture] = []
     for lez in ll:
         res.append(lezione_to_lecture(lez))
 
     return res
 
-def attivita_to_course(a : unitn.Attivita) -> course.Course:
+
+def attivita_to_course(a: unitn.Attivita) -> course.Course:
     c = course.Course()
     c.name = a['nome_insegnamento']
     c.university = utils.University.UNITN
@@ -110,8 +115,9 @@ def attivita_to_course(a : unitn.Attivita) -> course.Course:
     c.professor_name = a['docente']
     return c
 
-def list_attivita_to_list_courses(la : list[unitn.Attivita]) -> list[course.Course]:
-    res : list[course.Course] = []
+
+def list_attivita_to_list_courses(la: list[unitn.Attivita]) -> list[course.Course]:
+    res: list[course.Course] = []
     for a in la:
         res.append(attivita_to_course(a))
     return res

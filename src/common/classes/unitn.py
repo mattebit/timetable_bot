@@ -33,6 +33,7 @@ class Lezione(TypedDict):
     tipo: str
     ora_inizio: str
     ora_fine: str
+    Annullato: str
     # Custom
     timestamp_start: datetime
     timestamp_end: datetime

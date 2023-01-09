@@ -6,6 +6,8 @@ from enum import Enum
 class University(Enum):
     UNITN = 0
     UNIBZ = 1
+
+
 def parseHourString(hour_string: str) -> tuple[int | None, int | None, int | None]:
     pattern = "(\d?\d):(\d?\d):?(\d?\d)?"
     r = re.match(pattern, hour_string)

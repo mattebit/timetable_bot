@@ -4,10 +4,10 @@ import src.common.methods.utils as utils
 
 
 class Course:
-    name : str
-    id : str # some type of unique identifier wrt to other courses
-    professor_name : str
-    lectures : list[lecture.Lecture]
+    name: str
+    id: str  # some type of unique identifier wrt to other courses
+    professor_name: str
+    lectures: list[lecture.Lecture]
     university: utils.University
 
     def __init__(self):
@@ -16,6 +16,7 @@ class Course:
         self.professor_name = ""
         self.lectures = []
         self.university = -1
+        self.cancelled = False
 
     def fetch_lectures(self) -> list[lecture.Lecture]:
         """
@@ -37,9 +38,12 @@ class Course:
 
         return self.lectures
 
+
 def group_courses_by_uni(courses: list[Course]) -> dict[utils.University, list[Course]]:
-    res : dict[utils.University, list[Course]] = {}
+    res: dict[utils.University, list[Course]] = {}
     for c in courses:
+        if not c.university in res.keys():
+            res[c.university] = []
         res[c.university].append(c)
 
     return res
