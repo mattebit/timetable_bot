@@ -4,3 +4,4 @@ __pycache__
 .idea
 credentials.json
 timetable_bot_data
+docs/build
