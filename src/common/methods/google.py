@@ -194,9 +194,13 @@ def get_all_events(service: Resource, calendarId: str):
 
 # TODO: Update added events to calendar
 
-def update_lectures_to_calendar(userinfo: user.Userinfo):
+def update_lectures_to_calendar(userinfo: user.Userinfo) -> None:
+    """
+    Update the google calendar to match the lectures followed by the user
+    Args:
+        userinfo: the userinfo object that contains the lectures
+    """
     service = getService(userinfo.credentials)
-    # TODO: Fetch all events and remove the not used one
 
     event_list = get_all_events(service, userinfo.calendar_id)
     lecture_list = google_event_list_to_lecture_list(event_list)

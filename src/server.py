@@ -1,9 +1,11 @@
+import io
 import logging
 import os
 from enum import Enum
 from typing import List, Tuple, cast
 
 from dotenv import load_dotenv
+from ics import Calendar
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import (
     Application,
@@ -14,11 +16,12 @@ from telegram.ext import (
     PicklePersistence, ConversationHandler, MessageHandler, filters,
 )
 
-import src.common.classes.course as course
+# Do not change the order of the imports
 import src.common.classes.lecture as lecture
+import src.common.methods.unitn_activities as unitn_activities
 import src.common.classes.user as user
 import src.common.methods.google as google
-import src.common.methods.unitn_activities as unitn_activities
+import src.common.classes.course as course
 
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
@@ -140,6 +143,29 @@ async def keyboard_course_callback(update: Update, context: ContextTypes.DEFAULT
     context.drop_callback_data(query)
 
 
+async def export_ics(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """
+    Export all the user lectures to an ICS file and return it to the user.
+    Args:
+        update: the update object
+        context: the context object
+    """
+    userinfo: user.Userinfo = context.user_data["userinfo"]
+
+    cal = Calendar()
+
+    for i in userinfo.get_all_lectures():
+        cal.events.add(i.event)
+
+    f = io.BytesIO(bytes(str(cal.serialize()), 'utf-8'))
+
+    await context.bot.send_document(
+        update.message.chat_id,
+        document=f,
+        filename="calendar.ics"
+    )
+
+
 async def sync_google(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     userinfo: user.Userinfo = context.user_data["userinfo"]
     google.update_lectures_to_calendar(userinfo)
@@ -241,6 +267,7 @@ def main() -> None:
 
     # General
     application.add_handler(CommandHandler("list_following_courses", list_following_courses))
+    application.add_handler(CommandHandler("export_ics", export_ics))
 
     # Google calendar commands
     application.add_handler(CommandHandler("add_google_calendar", add_google_calendar))

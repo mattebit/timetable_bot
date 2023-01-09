@@ -5,12 +5,15 @@ from typing import cast
 import requests
 from ics import Event
 
-import src.common.classes.course as course
-# Avoid from ... import * because of circular imports problems
-# https://stackoverflow.com/questions/5748946/pythonic-way-to-resolve-circular-import-statements
 import src.common.classes.lecture as lecture
+import src.common.classes.course as course
 import src.common.classes.unitn as unitn
 import src.common.methods.utils as utils
+# Avoid from ... import * because of circular imports problems
+# https://stackoverflow.com/questions/5748946/pythonic-way-to-resolve-circular-import-statements
+
+
+
 
 UNITN_COMBO_ENDPOINT = "https://easyacademy.unitn.it/AgendaStudentiUnitn/combo.php"
 UNITN_GRID_ENDPOINT = "https://easyacademy.unitn.it/AgendaStudentiUnitn/grid_call.php"

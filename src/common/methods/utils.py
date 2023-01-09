@@ -1,6 +1,9 @@
 import re
 from datetime import datetime
 from enum import Enum
+from csv_ical import Convert
+
+from ics import Calendar
 
 
 class University(Enum):
@@ -34,3 +37,11 @@ def get_lecture_start_end_timestamps(ora_inizio: str,
     timestamp_end = datetime.fromtimestamp(date_timestamp).replace(hour=end_hour, minute=end_minutes)
 
     return timestamp_start, timestamp_end
+
+
+def ics_calendar_to_csv(ics_calendar : Calendar()) -> str:
+    # TODO: If have time
+    convert = Convert()
+    convert.cal = ics_calendar
+    convert.make_csv()
+    convert.save_csv("prova.csv")
