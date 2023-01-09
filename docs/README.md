@@ -12,3 +12,7 @@ I'm planning to also save access tokens for google here.
 ## Google OAuth consent
 I need to use the deprecated flow, with the code to be pasted into the application, as I'm not hosting a webserver to redirect the OAuth response
 https://google-auth-oauthlib.readthedocs.io/en/latest/reference/google_auth_oauthlib.flow.html#google_auth_oauthlib.flow.InstalledAppFlow
+
+## To generate documentation with sphynx
+sphinx-apidoc -f -o docs/source src
+sphinx-build -b html docs/source docs/build
