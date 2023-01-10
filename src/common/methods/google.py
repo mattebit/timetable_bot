@@ -15,7 +15,12 @@ import src.common.classes.user as user
 GOOGLE_SCOPES = ['https://www.googleapis.com/auth/calendar']
 
 
-def start_flow():
+def start_flow() -> (Flow, str):
+    """
+    Initiate an SSO flow to allow the bot to get consent to the user's google account
+    Returns: the flow object needed afterwards and the url that the user needs to visit to give consent
+
+    """
     flow = Flow.from_client_secrets_file(
         'credentials.json',
         scopes=GOOGLE_SCOPES,
@@ -28,12 +33,29 @@ def start_flow():
     return flow, auth_url
 
 
-def end_flow(flow, code: str):
+def end_flow(flow, code: str) -> Flow:
+    """
+    Ends the flow of an user, giving back the code retrieved during the start_flow() function
+    Args:
+        flow: the flow object, after the start_flow() function has been called
+        code: the code given by the user
+
+    Returns: the flow object
+
+    """
     flow.fetch_token(code=code)
     return flow
 
 
 def getService(credentials) -> Resource:
+    """
+    Get a service object needed by the google calendar API to do actions on the user calendar
+    Args:
+        credentials: the credentials of the user
+
+    Returns:
+        the service objects
+    """
     creds = credentials
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
@@ -52,12 +74,30 @@ def getService(credentials) -> Resource:
 
 
 def hasCalendar(service: Resource, calendarId: str) -> bool:
+    """
+    Function used to check if the given service has access to the given calendar id
+    Args:
+        service: the service to check
+        calendarId: the id of the calendar to check
+
+    Returns:
+        True if the service has the given calendar, and has access
+    """
     calendar = getCalendar(service, calendarId)
 
     return not (calendar is None)
 
 
 def getCalendar(service: Resource, calendarId: str):
+    """
+    Get the Calendar object from the given resource and calendarId
+    Args:
+        service: the service to use to get the calendar
+        calendarId: the id of the calendar to get
+
+    Returns:
+        The calendar object if found
+    """
     calendar = service.calendars().get(calendarId=calendarId).execute()
     return calendar
 

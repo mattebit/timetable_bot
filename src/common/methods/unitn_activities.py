@@ -5,15 +5,14 @@ from typing import cast
 import requests
 from ics import Event
 
-import src.common.classes.lecture as lecture
 import src.common.classes.course as course
+import src.common.classes.lecture as lecture
 import src.common.classes.unitn as unitn
 import src.common.methods.utils as utils
+
+
 # Avoid from ... import * because of circular imports problems
 # https://stackoverflow.com/questions/5748946/pythonic-way-to-resolve-circular-import-statements
-
-
-
 
 UNITN_COMBO_ENDPOINT = "https://easyacademy.unitn.it/AgendaStudentiUnitn/combo.php"
 UNITN_GRID_ENDPOINT = "https://easyacademy.unitn.it/AgendaStudentiUnitn/grid_call.php"
@@ -124,3 +123,22 @@ def list_attivita_to_list_courses(la: list[unitn.Attivita]) -> list[course.Cours
     for a in la:
         res.append(attivita_to_course(a))
     return res
+
+
+def fetch_unitn_lectures(c : course.Course) -> list[lecture.Lecture]:
+    """
+    Fetch all the lectures of this course, the variable university needs to be set correctly.
+
+    Returns:
+        object: also returns the list of lectures for convenience
+    Raises:
+        Exception: if an university is not specified
+    """
+    if c.university == utils.University.UNITN:
+        c.lectures = list_lezione_to_list_lecture(
+            fetch_lectures(c.id, True))
+        pass
+    else:
+        raise Exception("University not specified")
+
+    return c.lectures

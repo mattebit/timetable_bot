@@ -127,7 +127,7 @@ async def keyboard_course_callback(update: Update, context: ContextTypes.DEFAULT
         await query.edit_message_text(f"Your are already following the lectures of {course.name}")
         return
 
-    c.fetch_lectures()
+    c.lectures = unitn_activities.fetch_unitn_lectures(c)
 
     if len(c.lectures) == 0:
         await query.edit_message_text("No lectures found in the near future")

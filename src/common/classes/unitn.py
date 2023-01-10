@@ -3,6 +3,9 @@ from typing import TypedDict
 
 
 class Attivita(TypedDict):
+    """
+    TypedDict to store an unitn Attività object
+    """
     periodi: list
     pub_type: str
     label: str
@@ -17,6 +20,9 @@ class Attivita(TypedDict):
 
 
 class Lezione(TypedDict):
+    """
+    TypedDict to store an unitn Lezione object
+    """
     codice_insegnamento: str
     nome_insegnamento: str
     name_original: str
@@ -40,6 +46,10 @@ class Lezione(TypedDict):
 
 
 class GridCallResponse(TypedDict):
+    """
+    TypedDict that contains an unitn GridCallResponse. It is basically the response of a query containing a list of
+    Lezione objects
+    """
     day: str
     data: str
     data_timestamp: int

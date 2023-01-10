@@ -4,6 +4,9 @@ from ics import Event
 
 
 class Lecture:
+    """
+    Class that stores an ics event that represent an universitary lecture
+    """
     event: Event
     calendar_event_id: str
 
@@ -23,7 +26,19 @@ class Lecture:
         return is_equal
 
 
-def diff(local: list[Lecture], remote: list[Lecture]):
+def diff(local: list[Lecture], remote: list[Lecture]) -> (list[Lecture], list[Lecture], list[Lecture]) :
+    """
+    Check the differences between two lists of lectures, the local one is the one used by the bot, the remote one is
+    intended to be in google calendar
+    Args:
+        local: The local list of lectures
+        remote: The remote list of lecture
+
+    Returns: a tuple containing three lists of lectures:
+        - the first contains the lectures to be added in the remote list
+        - the second contains the local lectures to be updated from the remote list
+        - the third contains the remote lectures to be removed
+    """
     equal = []
     edited_local = copy.deepcopy(local)
     edited_remote = copy.deepcopy(remote)
