@@ -1,0 +1,605 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//unibz//ris_calendar_alipaoli-0
+X-WR-CALNAME:unibz ITT Calendar alipaoli-0
+NAME:unibz ITT Calendar alipaoli-0
+REFRESH-INTERVAL;VALUE=DURATION:P4H
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Europe/Rome
+LAST-MODIFIED:20201011T015911Z
+TZURL:http://tzurl.org/zoneinfo-outlook/Europe/Rome
+X-LIC-LOCATION:Europe/Rome
+BEGIN:DAYLIGHT
+TZNAME:CEST
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZNAME:CET
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1783100
+LAST-MODIFIED:20220531T133000Z
+DTSTART:20221213T080000Z
+DTEND:20221213T120000Z
+SUMMARY:Educazione degli adulti - 3° anno ES - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Parricchi Monica Adriana\nLecture:  Educazione degli adulti - 3° anno ES - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 13.12.2022 09:00-13:00\nOLE-Link: https://ole.unibz.it/course/view.php?id=10314\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1780772
+LAST-MODIFIED:20220728T072355Z
+DTSTART:20221214T080000Z
+DTEND:20221214T100000Z
+SUMMARY:Deutsch - 3. SJ Sozialpädagogik - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Aggregato Zanin Scaratti Renata\nLecture:  Deutsch - 3. SJ Sozialpädagogik - Mensa Gr. A - LECT\nLocation: BX A1.12 - Seminar room\nTime: 14.12.2022 09:00-11:00\nTeams JoinCode: ps0twym\nTeams Url: https://teams.microsoft.com/l/team/19:jej_2vJ9mFTFbIqd7YrrdC1pIz6gIz2RxZGA9rYxXSs1%40thread.tacv2/conversations?groupId=7dedf283-5d67-4d83-97c4-3f8e75834e79&tenantId=92513267-03e3-401a-80d4-c58ed6674e3b\nOLE-Link: https://ole.unibz.it/course/view.php?id=9867\n
+LOCATION:BX A1.12 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1768821
+LAST-MODIFIED:20220511T091500Z
+DTSTART:20221214T100000Z
+DTEND:20221214T120000Z
+SUMMARY:Interkulturelle Pädagogik - 3. Jahr SP - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Wallnöfer Gerwald\nLecture:  Interkulturelle Pädagogik - 3. Jahr SP - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 14.12.2022 11:00-13:00\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1768853
+LAST-MODIFIED:20220511T093000Z
+DTSTART:20221214T123000Z
+DTEND:20221214T143000Z
+SUMMARY:Educazione degli adulti - 3° anno ES - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Parricchi Monica Adriana\nLecture:  Educazione degli adulti - 3° anno ES - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 14.12.2022 13:30-15:30\nOLE-Link: https://ole.unibz.it/course/view.php?id=10314\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1750530
+LAST-MODIFIED:20220331T075945Z
+DTSTART:20221215T090000Z
+DTEND:20221215T120000Z
+SUMMARY:Statistica sociale - 3° anno Educatore sociale - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Cavrini Giulia\nLecture:  Statistica sociale - 3° anno Educatore sociale - Mensa Gr. A - LECT\nLocation: BX A1.60 - Seminar room\nTime: 15.12.2022 10:00-13:00\nTeams JoinCode: wum0cho\nTeams Url: https://teams.microsoft.com/l/team/19%3azD2UvQQIuLGh1k7AmsxDn4FIZaJK116eM4lR3rK9cTI1%40thread.tacv2/conversations?groupId=a3ea71b4-c85d-42da-97e3-7fa32663ccf5&tenantId=92513267-03e3-401a-80d4-c58ed6674e3b\nOLE-Link: https://ole.unibz.it/course/view.php?id=10239\n
+LOCATION:BX A1.60 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1751615
+LAST-MODIFIED:20221010T081132Z
+DTSTART:20221215T123000Z
+DTEND:20221215T173000Z
+SUMMARY:Cultural Anthropology - 3rd year Educators - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Dr. Heidemann Frank\nLecture:  Cultural Anthropology - 3rd year Educators - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 15.12.2022 13:30-18:30\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1844208
+LAST-MODIFIED:20221010T081500Z
+DTSTART:20221216T080000Z
+DTEND:20221216T120000Z
+SUMMARY:Cultural Anthropology - 3rd year Educators - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Dr. Heidemann Frank\nLecture:  Cultural Anthropology - 3rd year Educators - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 16.12.2022 09:00-13:00\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1768997
+LAST-MODIFIED:20220630T140107Z
+DTSTART:20221220T080000Z
+DTEND:20221220T110000Z
+SUMMARY:Hygiene - 3rd year Educators - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Dr. rer. nat. Frischmann Michael\nLecture:  Hygiene - 3rd year Educators - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 20.12.2022 09:00-12:00\nTeams JoinCode: m5qenh1\nTeams Url: https://teams.microsoft.com/l/team/19%3aN2VDl73iEnL_GGZUNlV2lH1QBedVBikguJYNVp7sSBQ1%40thread.tacv2/conversations?groupId=90a2eaff-4522-4123-958b-15da1faad3da&tenantId=92513267-03e3-401a-80d4-c58ed6674e3b\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1814872
+LAST-MODIFIED:20220721T133000Z
+DTSTART:20221220T123000Z
+DTEND:20221220T143000Z
+SUMMARY:Educazione degli adulti - 3° anno ES - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Parricchi Monica Adriana\nLecture:  Educazione degli adulti - 3° anno ES - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 20.12.2022 13:30-15:30\nOLE-Link: https://ole.unibz.it/course/view.php?id=10314\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1767226
+LAST-MODIFIED:20220531T092634Z
+DTSTART:20221220T143000Z
+DTEND:20221220T163000Z
+SUMMARY:Educazione ai media - 3°anno Educatore sociale - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Colombi Alessandro Efrem\nLecture:  Educazione ai media - 3°anno Educatore sociale - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 20.12.2022 15:30-17:30\nOLE-Link: https://ole.unibz.it/course/view.php?id=10449\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1780774
+LAST-MODIFIED:20220728T072418Z
+DTSTART:20221221T080000Z
+DTEND:20221221T100000Z
+SUMMARY:Deutsch - 3. SJ Sozialpädagogik - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Aggregato Zanin Scaratti Renata\nLecture:  Deutsch - 3. SJ Sozialpädagogik - Mensa Gr. A - LECT\nLocation: BX A1.12 - Seminar room\nTime: 21.12.2022 09:00-11:00\nTeams JoinCode: ps0twym\nTeams Url: https://teams.microsoft.com/l/team/19:jej_2vJ9mFTFbIqd7YrrdC1pIz6gIz2RxZGA9rYxXSs1%40thread.tacv2/conversations?groupId=7dedf283-5d67-4d83-97c4-3f8e75834e79&tenantId=92513267-03e3-401a-80d4-c58ed6674e3b\nOLE-Link: https://ole.unibz.it/course/view.php?id=9867\n
+LOCATION:BX A1.12 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1768822
+LAST-MODIFIED:20220511T091500Z
+DTSTART:20221221T100000Z
+DTEND:20221221T120000Z
+SUMMARY:Interkulturelle Pädagogik - 3. Jahr SP - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Wallnöfer Gerwald\nLecture:  Interkulturelle Pädagogik - 3. Jahr SP - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 21.12.2022 11:00-13:00\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1767222
+LAST-MODIFIED:20220505T094500Z
+DTSTART:20221221T123000Z
+DTEND:20221221T163000Z
+SUMMARY:Educazione ai media - 3°anno Educatore sociale - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Colombi Alessandro Efrem\nLecture:  Educazione ai media - 3°anno Educatore sociale - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 21.12.2022 13:30-17:30\nOLE-Link: https://ole.unibz.it/course/view.php?id=10449\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1768989
+LAST-MODIFIED:20220530T073519Z
+DTSTART:20221222T123000Z
+DTEND:20221222T153000Z
+SUMMARY:Hygiene - 3rd year Educators - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Dr. rer. nat. Frischmann Michael\nLecture:  Hygiene - 3rd year Educators - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 22.12.2022 13:30-16:30\nTeams JoinCode: m5qenh1\nTeams Url: https://teams.microsoft.com/l/team/19%3aN2VDl73iEnL_GGZUNlV2lH1QBedVBikguJYNVp7sSBQ1%40thread.tacv2/conversations?groupId=90a2eaff-4522-4123-958b-15da1faad3da&tenantId=92513267-03e3-401a-80d4-c58ed6674e3b\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1767235
+LAST-MODIFIED:20220913T095118Z
+DTSTART:20230110T080000Z
+DTEND:20230110T120000Z
+SUMMARY:Educazione ai media - 3°anno Educatore sociale - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Colombi Alessandro Efrem\nLecture:  Educazione ai media - 3°anno Educatore sociale - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 10.01.2023 09:00-13:00\nOLE-Link: https://ole.unibz.it/course/view.php?id=10449\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1784112
+LAST-MODIFIED:20221115T080347Z
+DTSTART:20230110T123000Z
+DTEND:20230110T153000Z
+SUMMARY:Prevention\, Health Promotion and Social Medicine - 3rd year SE - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Dr. rer. biol. hum. Plagg Barbara\nLecture:  Prevention\, Health Promotion and Social Medicine - 3rd year SE - Mensa Gr. A - LECT\nLocation: BX A1.15 - Seminar room\nTime: 10.01.2023 13:30-16:30\n
+LOCATION:BX A1.15 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1833971
+LAST-MODIFIED:20220913T100000Z
+DTSTART:20230111T080000Z
+DTEND:20230111T100000Z
+SUMMARY:Educazione ai media - 3°anno Educatore sociale - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Colombi Alessandro Efrem\nLecture:  Educazione ai media - 3°anno Educatore sociale - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 11.01.2023 09:00-11:00\nOLE-Link: https://ole.unibz.it/course/view.php?id=10449\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1768826
+LAST-MODIFIED:20220511T091500Z
+DTSTART:20230111T100000Z
+DTEND:20230111T120000Z
+SUMMARY:Interkulturelle Pädagogik - 3. Jahr SP - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Wallnöfer Gerwald\nLecture:  Interkulturelle Pädagogik - 3. Jahr SP - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 11.01.2023 11:00-13:00\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1768992
+LAST-MODIFIED:20220901T123448Z
+DTSTART:20230111T130000Z
+DTEND:20230111T150000Z
+SUMMARY:Hygiene - 3rd year Educators - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Dr. rer. nat. Frischmann Michael\nLecture:  Hygiene - 3rd year Educators - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 11.01.2023 14:00-16:00\nTeams JoinCode: m5qenh1\nTeams Url: https://teams.microsoft.com/l/team/19%3aN2VDl73iEnL_GGZUNlV2lH1QBedVBikguJYNVp7sSBQ1%40thread.tacv2/conversations?groupId=90a2eaff-4522-4123-958b-15da1faad3da&tenantId=92513267-03e3-401a-80d4-c58ed6674e3b\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1750529
+LAST-MODIFIED:20220331T075925Z
+DTSTART:20230112T090000Z
+DTEND:20230112T120000Z
+SUMMARY:Statistica sociale - 3° anno Educatore sociale - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Cavrini Giulia\nLecture:  Statistica sociale - 3° anno Educatore sociale - Mensa Gr. A - LECT\nLocation: BX A1.60 - Seminar room\nTime: 12.01.2023 10:00-13:00\nTeams JoinCode: wum0cho\nTeams Url: https://teams.microsoft.com/l/team/19%3azD2UvQQIuLGh1k7AmsxDn4FIZaJK116eM4lR3rK9cTI1%40thread.tacv2/conversations?groupId=a3ea71b4-c85d-42da-97e3-7fa32663ccf5&tenantId=92513267-03e3-401a-80d4-c58ed6674e3b\nOLE-Link: https://ole.unibz.it/course/view.php?id=10239\n
+LOCATION:BX A1.60 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1751617
+LAST-MODIFIED:20221010T081110Z
+DTSTART:20230112T123000Z
+DTEND:20230112T173000Z
+SUMMARY:Cultural Anthropology - 3rd year Educators - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Dr. Heidemann Frank\nLecture:  Cultural Anthropology - 3rd year Educators - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 12.01.2023 13:30-18:30\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1844205
+LAST-MODIFIED:20221010T081500Z
+DTSTART:20230113T080000Z
+DTEND:20230113T120000Z
+SUMMARY:Cultural Anthropology - 3rd year Educators - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Dr. Heidemann Frank\nLecture:  Cultural Anthropology - 3rd year Educators - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 13.01.2023 09:00-13:00\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1769001
+LAST-MODIFIED:20220511T121500Z
+DTSTART:20230117T080000Z
+DTEND:20230117T120000Z
+SUMMARY:Hygiene - 3rd year Educators - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Dr. rer. nat. Frischmann Michael\nLecture:  Hygiene - 3rd year Educators - Mensa Gr. A - LECT\nLocation: BX A1.36 - Seminar room\nTime: 17.01.2023 09:00-13:00\nTeams JoinCode: m5qenh1\nTeams Url: https://teams.microsoft.com/l/team/19%3aN2VDl73iEnL_GGZUNlV2lH1QBedVBikguJYNVp7sSBQ1%40thread.tacv2/conversations?groupId=90a2eaff-4522-4123-958b-15da1faad3da&tenantId=92513267-03e3-401a-80d4-c58ed6674e3b\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1750531
+LAST-MODIFIED:20221221T074059Z
+DTSTART:20230117T130000Z
+DTEND:20230117T160000Z
+SUMMARY:Statistica sociale - 3° anno Educatore sociale - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Cavrini Giulia\nLecture:  Statistica sociale - 3° anno Educatore sociale - Mensa Gr. A - LECT\nLocation: BX A1.60 - Seminar room\nTime: 17.01.2023 14:00-17:00\nTeams JoinCode: wum0cho\nTeams Url: https://teams.microsoft.com/l/team/19%3azD2UvQQIuLGh1k7AmsxDn4FIZaJK116eM4lR3rK9cTI1%40thread.tacv2/conversations?groupId=a3ea71b4-c85d-42da-97e3-7fa32663ccf5&tenantId=92513267-03e3-401a-80d4-c58ed6674e3b\nOLE-Link: https://ole.unibz.it/course/view.php?id=10239\n
+LOCATION:BX A1.60 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1858854
+LAST-MODIFIED:20221116T093000Z
+DTSTART:20230118T080000Z
+DTEND:20230118T120000Z
+SUMMARY:Interkulturelle Pädagogik - 3. Jahr SP - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Wallnöfer Gerwald\nLecture:  Interkulturelle Pädagogik - 3. Jahr SP - Mensa Gr. A - LECT\nLocation: BX A1.15 - Seminar room\nTime: 18.01.2023 09:00-13:00\n
+LOCATION:BX A1.15 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1780776
+LAST-MODIFIED:20220728T072443Z
+DTSTART:20230118T123000Z
+DTEND:20230118T163000Z
+SUMMARY:Deutsch - 3. SJ Sozialpädagogik - Mensa Gr. A-LECT
+DESCRIPTION:Lecturer: Prof. Aggregato Zanin Scaratti Renata\nLecture:  Deutsch - 3. SJ Sozialpädagogik - Mensa Gr. A - LECT\nLocation: BX A1.12 - Seminar room\nTime: 18.01.2023 13:30-17:30\nTeams JoinCode: ps0twym\nTeams Url: https://teams.microsoft.com/l/team/19:jej_2vJ9mFTFbIqd7YrrdC1pIz6gIz2RxZGA9rYxXSs1%40thread.tacv2/conversations?groupId=7dedf283-5d67-4d83-97c4-3f8e75834e79&tenantId=92513267-03e3-401a-80d4-c58ed6674e3b\nOLE-Link: https://ole.unibz.it/course/view.php?id=9867\n
+LOCATION:BX A1.12 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1842864
+LAST-MODIFIED:20221110T135143Z
+DTSTART:20230123T130000Z
+DTEND:20230123T130000Z
+SUMMARY:EXAM: Deutsch - 2. Jahr SP (64143)-EXAM
+DESCRIPTION:Lecturer: Prof. Aggregato Zanin Scaratti Renata\nLecture:  EXAM: Deutsch - 2. Jahr SP (64143) - EXAM\nLocation: BX A2.26 - Seminar room\nTime: 23.01.2023 14:00\n Students must be present at the start of the event\n
+LOCATION:BX A2.26 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1833381
+LAST-MODIFIED:20230109T094307Z
+DTSTART:20230124T080000Z
+DTEND:20230124T080000Z
+SUMMARY:EXAM: Soziale Landwirtschaft (Wahlfach) - 3. SJ SA&SP (51070/64160)-EXAM
+DESCRIPTION:Lecturer: Prof. Dr. Elsen Susanne Ursula\nLecture:  EXAM: Soziale Landwirtschaft (Wahlfach) - 3. SJ SA&SP (51070/64160) - EXAM\nLocation: BX A1.31 - Seminar room\nTime: 24.01.2023 09:00\n Students must be present at the start of the event\n
+LOCATION:BX A1.31 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1835062
+LAST-MODIFIED:20221110T140320Z
+DTSTART:20230125T080000Z
+DTEND:20230125T100000Z
+SUMMARY:EXAM: Statistica sociale - 3° anno ES (64117)-EXAM
+DESCRIPTION:Lecturer: Prof. Cavrini Giulia\nLecture:  EXAM: Statistica sociale - 3° anno ES (64117) - EXAM\nLocation: BX A1.51 - Seminar room\nTime: 25.01.2023 09:00-11:00\n
+LOCATION:BX A1.51 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1833955
+LAST-MODIFIED:20221110T140536Z
+DTSTART:20230126T080000Z
+DTEND:20230126T080000Z
+SUMMARY:EXAM: Educazione ai media - 3° anno ES (64114)-EXAM
+DESCRIPTION:Lecturer: Prof. Colombi Alessandro Efrem\nLecture:  EXAM: Educazione ai media - 3° anno ES (64114) - EXAM\nLocation: BX A1.01 - Seminar room\nTime: 26.01.2023 09:00\n Students must be present at the start of the event\n
+LOCATION:BX A1.01 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1835082
+LAST-MODIFIED:20221110T140609Z
+DTSTART:20230126T123000Z
+DTEND:20230126T123000Z
+SUMMARY:EXAM: Cultural Anthropology - 3rd year ES (64118)-EXAM
+DESCRIPTION:Lecturer: Prof. Dr. Heidemann Frank\nLecture:  EXAM: Cultural Anthropology - 3rd year ES (64118) - EXAM\nLocation: BX A2.01 - Seminar room\nTime: 26.01.2023 13:30\n Students must be present at the start of the event\n
+LOCATION:BX A2.01 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1835056
+LAST-MODIFIED:20221110T143219Z
+DTSTART:20230131T080000Z
+DTEND:20230131T080000Z
+SUMMARY:EXAM: Interkulturelle Pädagogik und Erwachsenenbildung - 3. Jahr SP (64115)-EXAM
+DESCRIPTION:Lecturer: Prof. Parricchi Monica Adriana\, Prof. Wallnöfer Gerwald\nLecture:  EXAM: Interkulturelle Pädagogik und Erwachsenenbildung - 3. Jahr SP (64115) - EXAM\nLocation: BX A2.01 - Seminar room\nTime: 31.01.2023 09:00\n Students must be present at the start of the event\n
+LOCATION:BX A2.01 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1831112
+LAST-MODIFIED:20221111T065957Z
+DTSTART:20230202T150000Z
+DTEND:20230202T170000Z
+SUMMARY:EXAM: Hygiene and Prevention\, Health Promotion and Social Medicinie - 3rd year SE (64116)-EXAM
+DESCRIPTION:Lecturer: Dr. rer. biol. hum. Plagg Barbara\, Dr. rer. nat. Frischmann Michael\nLecture:  EXAM: Hygiene and Prevention\, Health Promotion and Social Medicinie - 3rd year SE (64116) - EXAM\nLocation: BX A1.50 - Seminar room\nTime: 02.02.2023 16:00-18:00\n
+LOCATION:BX A1.50 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1764316
+LAST-MODIFIED:20220426T093000Z
+DTSTART:20230227T123000Z
+DTEND:20230227T163000Z
+SUMMARY:Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A-OPT-LECT
+DESCRIPTION:Lecturer: Dr. Bernhard Armin\nLecture:  Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A - OPT-LECT\nLocation: BX A1.36 - Seminar room\nTime: 27.02.2023 13:30-17:30\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1764317
+LAST-MODIFIED:20220426T093000Z
+DTSTART:20230306T123000Z
+DTEND:20230306T163000Z
+SUMMARY:Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A-OPT-LECT
+DESCRIPTION:Lecturer: Dr. Bernhard Armin\nLecture:  Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A - OPT-LECT\nLocation: BX A1.36 - Seminar room\nTime: 06.03.2023 13:30-17:30\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1764318
+LAST-MODIFIED:20220426T093000Z
+DTSTART:20230313T123000Z
+DTEND:20230313T163000Z
+SUMMARY:Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A-OPT-LECT
+DESCRIPTION:Lecturer: Dr. Bernhard Armin\nLecture:  Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A - OPT-LECT\nLocation: BX A1.36 - Seminar room\nTime: 13.03.2023 13:30-17:30\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1764319
+LAST-MODIFIED:20220426T093000Z
+DTSTART:20230320T123000Z
+DTEND:20230320T163000Z
+SUMMARY:Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A-OPT-LECT
+DESCRIPTION:Lecturer: Dr. Bernhard Armin\nLecture:  Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A - OPT-LECT\nLocation: BX A1.36 - Seminar room\nTime: 20.03.2023 13:30-17:30\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1764320
+LAST-MODIFIED:20220426T093000Z
+DTSTART:20230327T113000Z
+DTEND:20230327T153000Z
+SUMMARY:Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A-OPT-LECT
+DESCRIPTION:Lecturer: Dr. Bernhard Armin\nLecture:  Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A - OPT-LECT\nLocation: BX A1.36 - Seminar room\nTime: 27.03.2023 13:30-17:30\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1764322
+LAST-MODIFIED:20220426T093000Z
+DTSTART:20230403T113000Z
+DTEND:20230403T153000Z
+SUMMARY:Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A-OPT-LECT
+DESCRIPTION:Lecturer: Dr. Bernhard Armin\nLecture:  Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A - OPT-LECT\nLocation: BX A1.36 - Seminar room\nTime: 03.04.2023 13:30-17:30\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1764340
+LAST-MODIFIED:20220426T094500Z
+DTSTART:20230411T080000Z
+DTEND:20230411T110000Z
+SUMMARY:Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A-OPT-LECT
+DESCRIPTION:Lecturer: Dr. Bernhard Armin\nLecture:  Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A - OPT-LECT\nLocation: BX A1.36 - Seminar room\nTime: 11.04.2023 10:00-13:00\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1764338
+LAST-MODIFIED:20220426T093000Z
+DTSTART:20230411T113000Z
+DTEND:20230411T143000Z
+SUMMARY:Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A-OPT-LECT
+DESCRIPTION:Lecturer: Dr. Bernhard Armin\nLecture:  Soziale Landwirtschaft (Wahlfach) - 3rd year social - Mensa Gr. A - OPT-LECT\nLocation: BX A1.36 - Seminar room\nTime: 11.04.2023 13:30-16:30\n
+LOCATION:BX A1.36 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1833383
+LAST-MODIFIED:20221111T075812Z
+DTSTART:20230613T090000Z
+DTEND:20230613T090000Z
+SUMMARY:EXAM: Soziale Landwirtschaft (Wahlfach) - 3. SJ SA&SP (51070/64160)-EXAM
+DESCRIPTION:Lecturer: Dr. Bernhard Armin\nLecture:  EXAM: Soziale Landwirtschaft (Wahlfach) - 3. SJ SA&SP (51070/64160) - EXAM\nLocation: BX A2.21 - Seminar room\nTime: 13.06.2023 11:00\n Students must be present at the start of the event\n
+LOCATION:BX A2.21 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1842866
+LAST-MODIFIED:20221111T075740Z
+DTSTART:20230613T120000Z
+DTEND:20230613T120000Z
+SUMMARY:EXAM: Deutsch - 2. Jahr SP (64143)-EXAM
+DESCRIPTION:Lecturer: Prof. Aggregato Zanin Scaratti Renata\nLecture:  EXAM: Deutsch - 2. Jahr SP (64143) - EXAM\nLocation: BX A2.26 - Seminar room\nTime: 13.06.2023 14:00\n Students must be present at the start of the event\n
+LOCATION:BX A2.26 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1835072
+LAST-MODIFIED:20221111T082521Z
+DTSTART:20230614T070000Z
+DTEND:20230614T090000Z
+SUMMARY:EXAM: Statistica sociale - 3° anno ES (64117)-EXAM
+DESCRIPTION:Lecturer: Prof. Cavrini Giulia\nLecture:  EXAM: Statistica sociale - 3° anno ES (64117) - EXAM\nLocation: BX A1.50 - Seminar room\nTime: 14.06.2023 09:00-11:00\n
+LOCATION:BX A1.50 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1835090
+LAST-MODIFIED:20221111T082806Z
+DTSTART:20230615T113000Z
+DTEND:20230615T113000Z
+SUMMARY:EXAM: Cultural Anthropology - 3rd year ES (64118)-EXAM
+DESCRIPTION:Lecturer: Prof. Dr. Heidemann Frank\nLecture:  EXAM: Cultural Anthropology - 3rd year ES (64118) - EXAM\nLocation: BX A2.21 - Seminar room\nTime: 15.06.2023 13:30\n Students must be present at the start of the event\n
+LOCATION:BX A2.21 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1831114
+LAST-MODIFIED:20221111T084214Z
+DTSTART:20230619T150000Z
+DTEND:20230619T160000Z
+SUMMARY:EXAM: Hygiene and Prevention\, Health Promotion and Social Medicinie - 3rd year SE (64116)-EXAM
+DESCRIPTION:Lecturer: Dr. rer. biol. hum. Plagg Barbara\, Dr. rer. nat. Frischmann Michael\nLecture:  EXAM: Hygiene and Prevention\, Health Promotion and Social Medicinie - 3rd year SE (64116) - EXAM\nLocation: BX A1.51 - Seminar room\nTime: 19.06.2023 17:00-18:00\n
+LOCATION:BX A1.51 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1835058
+LAST-MODIFIED:20221111T090210Z
+DTSTART:20230621T123000Z
+DTEND:20230621T123000Z
+SUMMARY:EXAM: Interkulturelle Pädagogik und Erwachsenenbildung - 3. Jahr SP (64115)-EXAM
+DESCRIPTION:Lecturer: Prof. Wallnöfer Gerwald\, Prof. Parricchi Monica Adriana\nLecture:  EXAM: Interkulturelle Pädagogik und Erwachsenenbildung - 3. Jahr SP (64115) - EXAM\nLocation: BX A1.06 - Seminar room\nTime: 21.06.2023 14:30\n Students must be present at the start of the event\n
+LOCATION:BX A1.06 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230110T151713Z
+UID:20230110T151713Z-1833961
+LAST-MODIFIED:20221111T090328Z
+DTSTART:20230623T070000Z
+DTEND:20230623T070000Z
+SUMMARY:EXAM: Educazione ai media - 3° anno ES (64114)-EXAM
+DESCRIPTION:Lecturer: Prof. Colombi Alessandro Efrem\nLecture:  EXAM: Educazione ai media - 3° anno ES (64114) - EXAM\nLocation: BX A1.31 - Seminar room\nTime: 23.06.2023 09:00\n Students must be present at the start of the event\n
+LOCATION:BX A1.31 - Seminar room
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+END:VCALENDAR

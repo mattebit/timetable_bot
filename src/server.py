@@ -1,6 +1,7 @@
 import io
 import logging
 import os
+import pickle
 from enum import Enum
 from typing import List, Tuple, cast
 
@@ -22,9 +23,11 @@ import src.common.methods.unitn_activities as unitn_activities
 import src.common.classes.user as user
 import src.common.methods.google as google
 import src.common.classes.course as course
+from src.common.methods.utils import University
 
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
+unibz_courses : list[course.Course] = []
 
 # Enable logging
 logging.basicConfig(
@@ -81,6 +84,22 @@ async def add_unitn_course(update: Update, context: ContextTypes.DEFAULT_TYPE) -
                                     reply_markup=build_keyboard(courses_list))
 
 
+async def add_unibz_course(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    query = ' '.join(context.args)
+    query = query.lower()
+    l : list[course.Course] = []
+
+    for c in unibz_courses:
+        if query in c.name.lower():
+            l.append(c)
+
+    if len(unibz_courses) == 0:
+        await update.message.reply_text("No activities found")
+        return
+
+    await update.message.reply_text("Choose a course to follow:",
+                                    reply_markup=build_keyboard(l))
+
 async def list_following_courses(update, context):
     """
     Lists the courses the user is follwoing, grouping them by university
@@ -127,7 +146,9 @@ async def keyboard_course_callback(update: Update, context: ContextTypes.DEFAULT
         await query.edit_message_text(f"Your are already following the lectures of {course.name}")
         return
 
-    c.lectures = unitn_activities.fetch_unitn_lectures(c)
+    if c.university == University.UNITN:
+        c.lectures = unitn_activities.fetch_unitn_lectures(c)
+    # Unibz lectures should be already present in course
 
     if len(c.lectures) == 0:
         await query.edit_message_text("No lectures found in the near future")
@@ -244,6 +265,17 @@ async def add_google_calendar(update, context):
     )
 
 
+def load_unibz_cache():
+    global unibz_courses
+    with open("cache.pickle", "rb") as f:
+        unibz_courses = pickle.load(f)
+
+
+def store_unibz_cache():
+    global unibz_courses
+    with open("cache.pickle", "wb") as f:
+        pickle.dump(unibz_courses, f, pickle.HIGHEST_PROTOCOL)
+
 def main() -> None:
     """Run the bot."""
     # We use persistence to demonstrate how buttons can still work after the bot was restarted
@@ -264,6 +296,9 @@ def main() -> None:
 
     # Unitn commands
     application.add_handler(CommandHandler("follow_unitn_course", add_unitn_course))
+
+    # Unibz commands
+    application.add_handler(CommandHandler("follow_unibz_course", add_unibz_course))
 
     # General
     application.add_handler(CommandHandler("list_following_courses", list_following_courses))
@@ -296,4 +331,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    load_unibz_cache()
     main()
+    #store_unibz_cache()s

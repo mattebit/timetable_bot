@@ -1,4 +1,5 @@
 import datetime
+import pickle
 
 import requests
 from bs4 import BeautifulSoup, ResultSet, PageElement
@@ -18,6 +19,7 @@ def fetch_unibz_lectures(year: int = 2023) -> list[lecture.Lecture]:
 
     """
     date_from = f"{year}-09-01"
+    #date_to = f"{year}-10-01"
     date_to = f"{year+1}-07-31"
     page = 1
 
@@ -29,12 +31,14 @@ def fetch_unibz_lectures(year: int = 2023) -> list[lecture.Lecture]:
     while not done:
         # TODO: do the request
         resp = requests.get(
-            f"https://www.unibz.it/en/timetable/?sourceId=unibz&fromDate={date_from}&toDate={date_to}&page={page}")
+            f"https://www.unibz.it/en/timetable/?sourceId=unibz&searchByKeywords=Lecture"
+            f"&fromDate={date_from}&toDate={date_to}&page={page}")
         try:
             for i in parse_unibz_page(resp.text, str(year)):
                 lectures.append(i)
         except ValueError as e:
             done = True
+        print(f"Page {page} fetched")
         page += 1
 
     return lectures
@@ -88,14 +92,17 @@ def parse_unibz_day(div: PageElement, year: str = 2023) -> list[lecture.Lecture]
 
     day_html = soup.find("h2", {"class": "u-h4 u-push-btm"})
     day_str = purify_str(day_html.string)
-    print(f"Day: {day_str}")
+    #print(f"Day: {day_str}")
 
     l = soup.find("div", {"class": "g g-8@md u-padd-top-4@md"})
     items = l.findChildren("div", recursive=False)
     for item in items:
-        location_str, hour_str, type_str, name_str, teacher_str = parse_unibz_item(item)
-        if location_str == "" and hour_str == "" and type_str == "" and name_str =="" and teacher_str == "":
+        item_content = parse_unibz_item(item)
+
+        if item_content is None:
             continue
+
+        location_str, hour_str, type_str, name_str, teacher_str = item_content
 
         hour = hour_str.split(" - ")
         timestamp_start_str = f"{day_str} {year}, {hour[0]}"
@@ -115,7 +122,7 @@ def parse_unibz_day(div: PageElement, year: str = 2023) -> list[lecture.Lecture]
     return res
 
 
-def parse_unibz_item(item: PageElement) -> (str,str,str,str,str):
+def parse_unibz_item(item: PageElement) -> None or (str,str,str,str,str):
     """
     Parse an unibz html item element (a lecture or something else) from the timetable
     Args:
@@ -128,7 +135,7 @@ def parse_unibz_item(item: PageElement) -> (str,str,str,str,str):
         - The name of the item
         - The name of the teacher or host
     """
-    print("\nITEM:")
+    #print("\nITEM:")
     location_str = ""
     hour_str = ""
     type_str = ""
@@ -141,15 +148,15 @@ def parse_unibz_item(item: PageElement) -> (str,str,str,str,str):
     location_html = soup.find("p", {"class": "u-push-btm-quarter u-tt-caps u-fs-sm u-c-theme u-fw-bold"})
     if location_html.string is not None:
         location_str = purify_str(location_html.string)
-        print(f"Location: {location_str}")
+        #print(f"Location: {location_str}")
 
     # type
     type_html = soup.find("span", {"class": "u-c-mute"})
     type_str = type_html.string
-    print(f"type: {type_str}")
+    #print(f"type: {type_str}")
 
-    if type_str.lower() == "exam":
-        return "","","","",""
+    if type_str.lower() != "lecture" and type_str.lower() != "optional lecture":
+        return None
 
     # hour
     hour_html = soup.find("p", {"class": "u-push-btm-none u-tt-caps u-fs-sm u-fw-bold"})
@@ -157,14 +164,17 @@ def parse_unibz_item(item: PageElement) -> (str,str,str,str,str):
     hour_str = str(hour_html)
     pattern = "\d\d:\d\d\s-\s\d\d:\d\d"
     m = re.findall(pattern, hour_str)
-    #if m is not None:
+    if len(m) == 0:
+        # FIXME: some lectures don't have an end
+        return None
+
     hour_str = str(m[0])
-    print(f"hour: {hour_str}")
+    #print(f"hour: {hour_str}")
 
     # name
     name_html = soup.find("h3", {"class": "u-h5 u-push-btm-1"})
     name_str = purify_str(name_html.string)
-    print(f"name: {name_str}")
+    #print(f"name: {name_str}")
 
     teacher_html = soup.find("a", {"class": "actionLink actionLink-small actionLink-thin"})
     #print(f"teacher: {teacher_html}")
@@ -172,7 +182,7 @@ def parse_unibz_item(item: PageElement) -> (str,str,str,str,str):
     m = re.match(pattern, "".join(str(teacher_html).split("\n")))
     if m is not None:
         teacher_str = m.group(1)
-        print(f"teacher: {teacher_str}")
+        #print(f"teacher: {teacher_str}")
 
     return location_str, hour_str, type_str, name_str, teacher_str
 
@@ -185,9 +195,12 @@ def purify_str(s:str) -> str:
     return s
 
 if __name__ == "__main__":
-    lectures = fetch_unibz_lectures(2023)
+    lectures = fetch_unibz_lectures(2022)
 
     courses = course.group_lectures_in_courses(lectures, University.UNIBZ)
+
+    with open("../../cache.pickle", "wb") as f:
+        pickle.dump(courses, f, pickle.HIGHEST_PROTOCOL)
 
     exit()
     f = open("../../../docs/unibz_api/response.html", "r")
