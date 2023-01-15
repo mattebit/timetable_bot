@@ -105,14 +105,14 @@ def getCalendar(service: Resource, calendarId: str):
 def addCalendar(service: Resource, name: str):
     calendar = {
         'summary': name,
-        'timeZone': 'America/Los_Angeles'
+        'timeZone': 'Europe/Rome' # FIXME: to change based on user
     }
 
     created_calendar = service.calendars().insert(body=calendar).execute()
     return created_calendar
 
 
-def lecture_to_google_event(lec: lecture.Lecture, timezone: str):
+def lecture_to_google_event(lec: lecture.Lecture, timezone: str = "Europe/Rome"):
     e = lec.event
 
     event = {
