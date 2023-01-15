@@ -1,5 +1,5 @@
-import src.common.classes.lecture as lecture
-import src.common.methods.utils as utils
+import common.classes.lecture as lecture
+import common.methods.utils as utils
 
 
 class Course:

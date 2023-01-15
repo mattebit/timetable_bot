@@ -5,10 +5,10 @@ from typing import cast
 import requests
 from ics import Event
 
-import src.common.classes.course as course
-import src.common.classes.lecture as lecture
-import src.common.classes.unitn as unitn
-import src.common.methods.utils as utils
+import common.classes.course as course
+import common.classes.lecture as lecture
+import common.classes.unitn as unitn
+import common.methods.utils as utils
 
 
 # Avoid from ... import * because of circular imports problems

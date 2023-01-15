@@ -1,5 +1,5 @@
-import src.common.classes.course as course
-import src.common.classes.lecture as lecture
+import common.classes.course as course
+import common.classes.lecture as lecture
 
 
 class Userinfo:

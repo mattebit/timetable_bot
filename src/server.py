@@ -3,6 +3,7 @@ import logging
 import os
 import pickle
 from enum import Enum
+from os.path import isfile
 from typing import List, Tuple, cast
 
 from dotenv import load_dotenv
@@ -18,15 +19,17 @@ from telegram.ext import (
 )
 
 # Do not change the order of the imports
-import src.common.classes.lecture as lecture
-import src.common.methods.unitn_activities as unitn_activities
-import src.common.classes.user as user
-import src.common.methods.google as google
-import src.common.classes.course as course
-from src.common.methods.utils import University
+import common.classes.lecture as lecture
+import common.methods.unitn_activities as unitn_activities
+import common.classes.user as user
+import common.methods.google as google
+import common.classes.course as course
+from common.methods.utils import University
+from methods.unibz_parse import fetch_cache_unibz_courses
 
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
+UNIBZ_CACHE_FILE_PATH = "cache.pickle"
 unibz_courses : list[course.Course] = []
 
 # Enable logging
@@ -58,7 +61,7 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def clear(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Clears all the user data and access tokens"""
-    context.user_data = None
+    context.user_data['userinfo'] = None
     # TODO: Ask before clearing
     await update.effective_message.reply_text("All clear!")
 
@@ -267,13 +270,18 @@ async def add_google_calendar(update, context):
 
 def load_unibz_cache():
     global unibz_courses
-    with open("cache.pickle", "rb") as f:
+
+    if not isfile(UNIBZ_CACHE_FILE_PATH):
+        print("Cache file not found, fetching unibz lectures for the first time.\nThis could take a while")
+        fetch_cache_unibz_courses(UNIBZ_CACHE_FILE_PATH)
+
+    with open(UNIBZ_CACHE_FILE_PATH, "rb") as f:
         unibz_courses = pickle.load(f)
 
 
 def store_unibz_cache():
     global unibz_courses
-    with open("cache.pickle", "wb") as f:
+    with open(UNIBZ_CACHE_FILE_PATH, "wb") as f:
         pickle.dump(unibz_courses, f, pickle.HIGHEST_PROTOCOL)
 
 def main() -> None:
@@ -293,6 +301,7 @@ def main() -> None:
     application.add_handler(CommandHandler("help", help))
     application.add_handler(CommandHandler("clear", clear))
     application.add_handler(CommandHandler("clear_courses", clear_courses))
+    # TODO: remove course
 
     # Unitn commands
     application.add_handler(CommandHandler("follow_unitn_course", add_unitn_course))
@@ -331,6 +340,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    #sys.path.append("src")
     load_unibz_cache()
+
     main()
     #store_unibz_cache()s

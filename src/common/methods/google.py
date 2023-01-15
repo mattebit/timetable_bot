@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import os
 from datetime import datetime
 
 from google.auth.exceptions import MutualTLSChannelError
@@ -9,11 +10,10 @@ from googleapiclient.discovery import Resource
 from googleapiclient.discovery import build
 from ics import Event
 
-import src.common.classes.lecture as lecture
-import src.common.classes.user as user
+import common.classes.lecture as lecture
+import common.classes.user as user
 
 GOOGLE_SCOPES = ['https://www.googleapis.com/auth/calendar']
-
 
 def start_flow() -> (Flow, str):
     """

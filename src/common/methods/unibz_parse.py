@@ -2,12 +2,12 @@ import datetime
 import pickle
 
 import requests
-from bs4 import BeautifulSoup, ResultSet, PageElement
+from bs4 import BeautifulSoup, PageElement
 import re
 
-import src.common.classes.lecture as lecture
-import src.common.classes.course as course
-from src.common.methods.utils import University
+import common.classes.lecture as lecture
+import common.classes.course as course
+from common.methods.utils import University
 
 
 def fetch_unibz_lectures(year: int = 2023) -> list[lecture.Lecture]:
@@ -194,14 +194,22 @@ def purify_str(s:str) -> str:
     s = re.sub(pattern, " ", s)
     return s
 
-if __name__ == "__main__":
-    lectures = fetch_unibz_lectures(2022)
+def fetch_cache_unibz_courses(cache_path: str, year_to_fetch:int = 2022):
+    """
+    Fetches and saves in the specified file all the unibz courses, serializing data with pickle
+    Args:
+        year_to_fetch: the academic year to fetch
+        cache_path: the path where to store all courses and lectures
+    """
+    lectures = fetch_unibz_lectures(year_to_fetch)
 
     courses = course.group_lectures_in_courses(lectures, University.UNIBZ)
 
-    with open("../../cache.pickle", "wb") as f:
+    with open(cache_path, "wb") as f:
         pickle.dump(courses, f, pickle.HIGHEST_PROTOCOL)
 
+
+if __name__ == "__main__":
     exit()
     f = open("../../../docs/unibz_api/response.html", "r")
     txt = f.read()
