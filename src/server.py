@@ -25,7 +25,7 @@ import common.classes.user as user
 import common.methods.google as google
 import common.classes.course as course
 from common.methods.utils import University
-from methods.unibz_parse import fetch_cache_unibz_courses
+from common.methods.unibz_parse import fetch_cache_unibz_courses
 
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
