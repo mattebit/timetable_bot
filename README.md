@@ -15,6 +15,9 @@ And run it by doing
 docker run timetable_bot
 ```
 
+## Documentation
+The documentation of the software and the services can be found in the `docs/` folder
+
 ## TODO
 - [x] Write documentation of bot API
 - [x] Write info about google API
