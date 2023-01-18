@@ -2,6 +2,7 @@ import io
 import logging
 import os
 import pickle
+import threading
 from enum import Enum
 from os.path import isfile
 from typing import List, Tuple, cast
@@ -341,7 +342,9 @@ def main() -> None:
 
 if __name__ == "__main__":
     #sys.path.append("src")
-    load_unibz_cache()
+    #load_unibz_cache()
+    t = threading.Thread(target=load_unibz_cache)
+    t.start()
 
     main()
     #store_unibz_cache()s
