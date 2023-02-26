@@ -16,18 +16,19 @@ import common.methods.utils as utils
 
 UNITN_COMBO_ENDPOINT = "https://easyacademy.unitn.it/AgendaStudentiUnitn/combo.php"
 UNITN_GRID_ENDPOINT = "https://easyacademy.unitn.it/AgendaStudentiUnitn/grid_call.php"
+YEAR = 2022
 
 
 def filter_activities(activities: list[unitn.Attivita], filter_by: str) -> list[unitn.Attivita]:
     res = []
     for act in activities:
-        if filter_by in act['nome_insegnamento']:
+        if filter_by.lower() in act['nome_insegnamento'].lower():
             res.append(act)
     return res
 
 
 def fetch_activities() -> list[unitn.Attivita]:
-    year = 2022  # str(datetime.date.today().year)
+    year = YEAR  # str(datetime.date.today().year)
     # TODO: urllib urlparse purify
     url = UNITN_COMBO_ENDPOINT + f"?sw=ec_&aa={year}&page=attivita"
 
@@ -51,7 +52,7 @@ def fetch_activities() -> list[unitn.Attivita]:
 
 # the date filters the week activities
 def fetch_lectures(attivita_id: str, all_events: bool = False) -> list[unitn.Lezione]:
-    year = 2022  # str(datetime.date.today().year)
+    year = YEAR  # str(datetime.date.today().year)
     date = datetime.date.today().strftime('%d-%m-%Y')  # italian format
     if all_events:
         all_events = 1

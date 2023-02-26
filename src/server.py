@@ -9,7 +9,7 @@ from typing import List, Tuple, cast
 
 from dotenv import load_dotenv
 from ics import Calendar
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, User
 from telegram.ext import (
     Application,
     CallbackQueryHandler,
@@ -45,8 +45,33 @@ class link_google_states(Enum):
     INSERT_CODE = 1
 
 
+def update_course_task(context):
+    user_info : user.Userinfo = context.user_data['userinfo']
+
+    if len(user_info.follwoing_courses) == 0:
+        return
+
+    #before = user_info.follwoing_courses
+
+    for c in user_info.follwoing_courses:
+        if c.university == University.UNITN:
+            c.lectures = unitn_activities.fetch_unitn_lectures(c)
+
+    # TODO: Send message if course list changed
+    # TODO: trigger update of unibz courses
+    # Unibz lectures should be already present in course
+
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     context.user_data["userinfo"] = user.Userinfo()
+
+    chat_id = update.message.chat_id
+    context.job_queue.run_repeating(update_course_task,
+                                    3600,
+                                    chat_id=chat_id,
+                                    user_id=context._user_id,
+                                    name=str(chat_id))
+
     await update.message.reply_text(
         'Hey, type /help for more info'
     )
@@ -63,6 +88,14 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def clear(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Clears all the user data and access tokens"""
     context.user_data['userinfo'] = None
+
+    # Removes scheduled tasks for the user
+    try:
+        job = context.job_queue.get_jobs_by_name(str(update.message.chat_id))
+        job[0].schedule_removal()
+    except:
+        pass
+
     # TODO: Ask before clearing
     await update.effective_message.reply_text("All clear!")
 
@@ -109,6 +142,14 @@ async def list_following_courses(update, context):
     Lists the courses the user is follwoing, grouping them by university
     """
     userinfo: user.Userinfo = context.user_data['userinfo']
+
+    # Also trigger the update task
+    chat_id = update.message.chat_id
+    context.job_queue.run_repeating(update_course_task,
+                                    3600,
+                                    chat_id=chat_id,
+                                    user_id=context._user_id,
+                                    name=str(chat_id))
 
     res = ""
 

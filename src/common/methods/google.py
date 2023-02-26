@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import os
 from datetime import datetime
+from os.path import realpath, dirname, join
 
 from google.auth.exceptions import MutualTLSChannelError
 from google.auth.transport.requests import Request
@@ -15,6 +16,8 @@ import common.classes.user as user
 
 GOOGLE_SCOPES = ['https://www.googleapis.com/auth/calendar']
 
+root_dir = dirname(dirname(dirname(dirname(realpath(__file__)))))
+
 def start_flow() -> (Flow, str):
     """
     Initiate an SSO flow to allow the bot to get consent to the user's google account
@@ -22,7 +25,7 @@ def start_flow() -> (Flow, str):
 
     """
     flow = Flow.from_client_secrets_file(
-        'credentials.json',
+        join(root_dir,'credentials.json'),
         scopes=GOOGLE_SCOPES,
         redirect_uri='urn:ietf:wg:oauth:2.0:oob')
 

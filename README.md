@@ -12,11 +12,18 @@ docker build . -t timetable_bot
 
 And run it by doing
 ```bash
-docker run timetable_bot
+docker run --name timetable_bot timetable_bot 
+```
+
+You can also detach and auto-start by doing
+```bash
+docker run -d --restart unless-stopped --name timetable_bot timetable_bot
 ```
 
 ## Documentation
 The documentation of the software and the services can be found in the `docs/` folder
+
+https://timetablebot.docs.apiary.io/#
 
 ## TODO
 - [x] Write documentation of bot API
@@ -25,7 +32,7 @@ The documentation of the software and the services can be found in the `docs/` f
 - [ ] Write report and explain how all works
 - [ ] Build a dockerimage
 - [ ] Separate the adapter from the backend
-
+    
 ## ideas
 - fetch updates on lectures every 30 minutes informing the user about changes
 - Add the followed courses form a user
