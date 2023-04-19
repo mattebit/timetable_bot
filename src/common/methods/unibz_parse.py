@@ -108,8 +108,8 @@ def parse_unibz_day(div: PageElement, year: str = 2023) -> list[lecture.Lecture]
         timestamp_start_str = f"{day_str} {year}, {hour[0]}"
         timestamp_end_str = f"{day_str} {year}, {hour[1]}"
         #https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes
-        dt_start = datetime.datetime.strptime(timestamp_start_str, "%A, %d %b %Y, %H:%M")
-        dt_end = datetime.datetime.strptime(timestamp_end_str, "%A, %d %b %Y, %H:%M")
+        dt_start = datetime.datetime.strptime(timestamp_start_str, "%A, %d %b %Y, %H:%M").replace(tzinfo=None)
+        dt_end = datetime.datetime.strptime(timestamp_end_str, "%A, %d %b %Y, %H:%M").replace(tzinfo=None)
 
         lec = lecture.Lecture()
         lec.event.name = name_str

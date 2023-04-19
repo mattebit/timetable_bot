@@ -30,8 +30,8 @@ def get_lecture_start_end_timestamps(ora_inizio: str,
     start_hour, start_minutes, _ = parseHourString(ora_inizio)
     end_hour, end_minutes, _ = parseHourString(ora_fine)
 
-    timestamp_start = datetime.fromtimestamp(date_timestamp, timezone(timedelta(seconds=3600))).replace(hour=start_hour, minute=start_minutes)
-    timestamp_end = datetime.fromtimestamp(date_timestamp, timezone(timedelta(seconds=3600))).replace(hour=end_hour, minute=end_minutes)
+    timestamp_start = datetime.fromtimestamp(date_timestamp).replace(hour=start_hour, minute=start_minutes, tzinfo=None)
+    timestamp_end = datetime.fromtimestamp(date_timestamp).replace(hour=end_hour, minute=end_minutes, tzinfo=None)
 
     return timestamp_start, timestamp_end
 

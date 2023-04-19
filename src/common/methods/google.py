@@ -125,12 +125,12 @@ def lecture_to_google_event(lec: lecture.Lecture, timezone: str = "Europe/Rome")
         'start': {
             # 'dateTime': '2015-05-28T09:00:00-07:00',
             # The - is the offset, not needed if using timezone
-            'dateTime': e.begin.isoformat('T'),
+            'dateTime': e.begin.format('YYYY-MM-DDTHH:mm:ss'),
             'timeZone': timezone,
         },
         'end': {
             # 'dateTime': '2015-05-28T17:00:00-07:00',
-            'dateTime': e.end.isoformat('T'),
+            'dateTime': e.end.format('YYYY-MM-DDTHH:mm:ss'),
             'timeZone': timezone,
         },
         'recurrence': [
@@ -149,8 +149,8 @@ def update_google_event_from_lecture(event, lec: lecture.Lecture):
     event['summary'] = lec.event.name
     event['location'] = lec.event.location
     event['description'] = lec.event.description
-    event['start']['dateTime'] = lec.event.begin.isoformat('T')
-    event['end']['dateTime'] = lec.event.end.isoformat('T')
+    event['start']['dateTime'] = lec.event.begin.format('YYYY-MM-DDTHH:mm:ss')
+    event['end']['dateTime'] = lec.event.end.format('YYYY-MM-DDTHH:mm:ss')
 
     return event
 
@@ -174,12 +174,12 @@ def addEvent(service: Resource,
         'start': {
             # 'dateTime': '2015-05-28T09:00:00-07:00',
             # The - is the offset, not needed if using timezone
-            'dateTime': start.isoformat('T'),
+            'dateTime': start.replace(tzinfo=None).isoformat('T')[:-6],
             'timeZone': timezone,
         },
         'end': {
             # 'dateTime': '2015-05-28T17:00:00-07:00',
-            'dateTime': end.isoformat('T'),
+            'dateTime': end.replace(tzinfo=None).isoformat('T')[:-6],
             'timeZone': timezone,
         },
         'recurrence': [
@@ -278,8 +278,8 @@ def google_event_to_lecture(google_event) -> lecture.Lecture:
     # lec.event.updated = google_event['updated']
     lec.event.description = google_event['description']
     lec.event.location = google_event['location']
-    lec.event.begin = datetime.fromisoformat(google_event['start']['dateTime'])
-    lec.event.end = datetime.fromisoformat(google_event['end']['dateTime'])
+    lec.event.begin = datetime.fromisoformat(google_event['start']['dateTime']).replace(tzinfo=None)
+    lec.event.end = datetime.fromisoformat(google_event['end']['dateTime']).replace(tzinfo=None)
 
     return lec
 
@@ -300,7 +300,7 @@ def update_lecture(service: Resource, calendarId: str, lec: lecture.Lecture):
     # First retrieve the event from the API.
     event = service.events().get(calendarId=calendarId, eventId=lec.calendar_event_id).execute()
 
-    event = update_google_event_from_lecture(event)
+    event = update_google_event_from_lecture(event, lec)
 
     updated_event = service.events().update(calendarId=calendarId,
                                             eventId=lec.calendar_event_id,
